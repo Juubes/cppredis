@@ -2,6 +2,7 @@
 #include <string>
 #include <ios>
 #include <signal.h>
+#include <curses.h>
 
 #include "./ctrlchandler.hpp"
 #include "./server.hpp"
@@ -15,15 +16,18 @@ int main(int argc, char const *argv[])
     for (auto i = 0; i < NSIG; i++)
         signal(i, signal_callback_handler);
 
-    bool exit = false;
-
     Redis::Server server;
 
-    while (!exit)
+    initscr();
+    cbreak();
+    noecho();
+
+    while (1)
     {
         if (server.readCommand() == false)
             break;
     }
 
+    endwin();
     return 0;
 }

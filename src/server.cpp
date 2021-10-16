@@ -4,6 +4,7 @@
 #include <iterator>
 #include <algorithm>
 #include <sstream>
+#include <curses.h>
 
 #include "server.hpp"
 #include "cstring"
@@ -12,6 +13,10 @@
 #define BUFFER_SIZE 4096
 
 using namespace std;
+
+
+
+
 
 namespace Redis
 {
